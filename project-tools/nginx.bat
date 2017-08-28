@@ -7,8 +7,8 @@ rem OsChina: http://git.oschina.net/shuzheng/zheng
 echo ==================begin========================
 
 cls 
-SET NGINX_PATH=D:
-SET NGINX_DIR=D:\nginx-1.11.11\
+SET NGINX_PATH=D:\Program Files
+SET NGINX_DIR=D:\Program Files\nginx-1.13.4
 color 0a 
 TITLE zheng-tools Power By shuzheng (http://www.zhangshuzheng.cn)
 
@@ -26,67 +26,67 @@ ECHO.
 
 :MENU 
 
-ECHO.---------------------------- nginx Ω¯≥Ã¡–±Ì --------------------------------
+ECHO.---------------------------- nginx ËøõÁ®ãÂàóË°® --------------------------------
 tasklist|findstr /i "nginx.exe"
-if ERRORLEVEL 1 (echo nginxŒ¥∆Ù∂Ø) else (echo nginx“—∆Ù∂Ø)
+if ERRORLEVEL 1 (echo nginxÊú™ÂêØÂä®) else (echo nginxÂ∑≤ÂêØÂä®)
 ECHO.----------------------------------------------------------------------------
 
 
 ECHO. 
-	ECHO.  [1] ∆Ù∂ØNginx  
-	ECHO.  [2] πÿ±’Nginx  
-	ECHO.  [3] ÷ÿ∆ÙNginx  
-	ECHO.  [4] ÕÀ ≥ˆ 
+    ECHO.  [1] ÂêØÂä®Nginx  
+    ECHO.  [2] ÂÖ≥Èó≠Nginx  
+    ECHO.  [3] ÈáçÂêØNginx  
+    ECHO.  [4] ÈÄÄ Âá∫ 
 ECHO. 
 
-ECHO.«Î ‰»Î—°‘ÒœÓƒøµƒ–Ú∫≈:
+ECHO.ËØ∑ËæìÂÖ•ÈÄâÊã©È°πÁõÆÁöÑÂ∫èÂè∑:
 set /p ID=
-	IF "%id%"=="1" GOTO start 
-	IF "%id%"=="2" GOTO stop 
-	IF "%id%"=="3" GOTO restart 
-	IF "%id%"=="4" EXIT
+    IF "%id%"=="1" GOTO start 
+    IF "%id%"=="2" GOTO stop 
+    IF "%id%"=="3" GOTO restart 
+    IF "%id%"=="4" EXIT
 PAUSE 
 
 :start 
-	call :startNginx
-	ECHO.============================================================================
-	ECHO. 
-	ECHO. 
-	GOTO MENU
+    call :startNginx
+    ECHO.============================================================================
+    ECHO. 
+    ECHO. 
+    GOTO MENU
 
 :stop 
-	call :shutdownNginx
-	ECHO.============================================================================
-	ECHO. 
-	ECHO. 
-	GOTO MENU
+    call :shutdownNginx
+    ECHO.============================================================================
+    ECHO. 
+    ECHO. 
+    GOTO MENU
 :restart 
-	call :shutdownNginx
-	call :startNginx
-	ECHO.============================================================================
-	ECHO. 
-	ECHO. 
-	GOTO MENU
+    call :shutdownNginx
+    call :startNginx
+    ECHO.============================================================================
+    ECHO. 
+    ECHO. 
+    GOTO MENU
 
 :shutdownNginx
-	ECHO. 
-	ECHO.πÿ±’Nginx...... 
-	taskkill /F /IM nginx.exe > nul
-	ECHO.OK,πÿ±’À˘”–nginx Ω¯≥Ã
-	goto :eof
+    ECHO. 
+    ECHO.ÂÖ≥Èó≠Nginx...... 
+    taskkill /F /IM nginx.exe > nul
+    ECHO.OK,ÂÖ≥Èó≠ÊâÄÊúânginx ËøõÁ®ã
+    goto :eof
 
 :startNginx
-	ECHO. 
-	ECHO.∆Ù∂ØNginx...... 
-	IF NOT EXIST "%NGINX_DIR%nginx.exe" ECHO "%NGINX_DIR%nginx.exe"≤ª¥Ê‘⁄ 
+    ECHO. 
+    ECHO.ÂêØÂä®Nginx...... 
+    IF NOT EXIST "%NGINX_DIR%nginx.exe" ECHO "%NGINX_DIR%nginx.exe"‰∏çÂ≠òÂú® 
 
-	%NGINX_PATH% 
+    %NGINX_PATH% 
 
-	cd "%NGINX_DIR%" 
+    cd "%NGINX_DIR%" 
 
-	IF EXIST "%NGINX_DIR%nginx.exe" (
-		echo "start '' nginx.exe"
-		start "" nginx.exe
-	)
-	ECHO.OK
-	goto :eof
+    IF EXIST "%NGINX_DIR%nginx.exe" (
+        echo "start '' nginx.exe"
+        start "" nginx.exe
+    )
+    ECHO.OK
+    goto :eof
